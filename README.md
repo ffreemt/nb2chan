@@ -47,5 +47,4 @@ http -v "http://...:port/nb2chan/?qq=1234&msg=hello world" "token: DEMO_TOKEN"
 ```
 
 ## 其他
-`nb2chan`
-默认令牌
+`nb2chan`采用简单令牌鉴权。 有效令牌可在 `.env.nb2chan` 里设定。 默认有效令牌为`['DEMO_TOKEN', 'SECRET_TOKEN']` (参看`config.py`）
