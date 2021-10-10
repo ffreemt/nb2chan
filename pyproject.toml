@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "nb2chan"
+version = "0.1.0"
+description = "nb2chan push service"
+authors = ["ffreemt"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/ffreemt/nb2chan"
+include = ["LICENSE"]
+
+[tool.poetry.dependencies]
+python = ">=3.7.3,<4.0"
+# python = "^3.6.7"
+logzero = "^1.7.0"
+pendulum = "^2.1.2"
+nonebot2 = "^2.0.0-alpha.16"
+
+[tool.poe.executor]
+type = "poetry"
+
+[tool.poe.tasks]
+test = "pytest tests"
+build = "poetry build"
+_publish = "poetry publish"
+release = ["test", "build", "_publish"]
+lint = { cmd = "pylint nb2chan" }
+format = "black tests nb2chan"
+tunnel = {cmd ="ssh -CN ip_or_hostname_defined_in_hosts -L 9091:127.0.0.1:9091"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.9.2"
+pep257 = "^0.7.0"
+poethepoet = "^0.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
