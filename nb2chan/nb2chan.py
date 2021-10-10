@@ -31,7 +31,7 @@ async def _():
 import platform
 import pendulum
 from fastapi import Security, Depends, HTTPException, status
-from fastapi.staticfiles import StaticFiles
+# from fastapi.staticfiles import StaticFiles
 from fastapi.security import APIKeyHeader, APIKeyQuery
 
 # from contextvars import ContextVar
@@ -60,7 +60,7 @@ API_TOKENS = config.token_list
 
 logger.debug("API_TOKENS: %s", API_TOKENS)
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 # app.mount("/", StaticFiles(directory="static"), name="root")
 
 api_key_header = APIKeyHeader(name="Token", auto_error=False)
@@ -103,7 +103,7 @@ async def nb2chan(
 
     ```bash
     http -v "http://.../nb2chan/?Token=DEMO_TOKEN&qq=123&msg=hello world"
- 
+
     # send Token via HEADERS
     http -v "token:DEMO_TOKEN" "http://.../nb2chan/?qq=123&msg=hello world"
     ```
