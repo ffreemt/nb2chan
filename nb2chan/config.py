@@ -15,6 +15,7 @@ class Settings(BaseSettings):
 
     @validator("token_list")
     def validate_namelist(cls, v):
+        """Validate."""
         res = []
         for elm in v:
             try:

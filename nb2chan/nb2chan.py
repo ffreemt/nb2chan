@@ -116,8 +116,6 @@ async def nb2chan(
     else:
         query = ""
 
-    logger.debug("bots.values(): %s", bots.values())
-
     _ = """
     # bot = nonebot.get_bots().get("2129462094")
     bots = [*nonebot.get_bots().values()]
@@ -129,6 +127,8 @@ async def nb2chan(
         return
     """
     _ = [*nonebot.get_bots().values()]
+    logger.debug("[*nonebot.get_bots().values()]: %s", _)
+
     # _ = [*bots.values()]
     bot = _[0] if _ else None
     if not bot:
