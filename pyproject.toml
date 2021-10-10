@@ -16,6 +16,7 @@ pendulum = "^2.1.2"
 nonebot2 = "^2.0.0-alpha.16"
 # aiofiles
 
+aiocqhttp = "^1.4.2"
 [tool.poe.executor]
 type = "poetry"
 
