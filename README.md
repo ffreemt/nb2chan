@@ -8,10 +8,11 @@ nonebot2酱（推送服务插件）nonebot2chan (push service plugin)
 ```shell
 # x pip install nb2chan
 # x or poetry add nb2chan
-# pip install git+https://github.com/ffreemt/nb2chan
-# poetry add git+https://github.com/ffreemt/nb2chan
 
-git clone https://github.com/ffreemt/nb2chan && cd nb2chan && poetry install --nodev
+pip install git+https://github.com/ffreemt/nb2chan
+# or poetry add git+https://github.com/ffreemt/nb2chan
+
+# git clone https://github.com/ffreemt/nb2chan && cd nb2chan && poetry  install --nodev
 
 # To upgrade
 # x pip install nb2chan -U
