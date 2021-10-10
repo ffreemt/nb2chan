@@ -48,7 +48,7 @@ config = Settings()
 # logzero.loglevel(20)
 logzero.loglevel(10)
 
-bots = nonebot.get_bots()
+# bots = nonebot.get_bots()
 app = nonebot.get_asgi()
 node = platform.node()
 
@@ -128,8 +128,8 @@ async def nb2chan(
     if not bot:
         return
     """
-    # _ = [*nonebot.get_bots().values()]
-    _ = [*bots.values()]
+    _ = [*nonebot.get_bots().values()]
+    # _ = [*bots.values()]
     bot = _[0] if _ else None
     if not bot:
         _ = "Unable to acquire bot, exiting..."
