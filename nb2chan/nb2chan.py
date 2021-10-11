@@ -76,15 +76,15 @@ async def get_api_key(
     logger.debug("api_key_query: %s", api_key_query)
     logger.debug("api_key_header: %s", api_key_header)
     if api_key_query in API_TOKENS:
-        logger.debug("valid Toeken provided in query")
+        logger.debug("valid Token provided in query")
         return api_key_query
     elif api_key_header in API_TOKENS:
-        logger.debug("valid Toeken provided in headers")
+        logger.debug("valid Token provided in headers")
         return api_key_header
     # elif api_key_cookie == API_KEY:
     # return api_key_cookie
     else:
-        logger.debug("no valid Toeken provided, raising exception")
+        logger.debug("no valid Token provided, raising exception")
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Unable to validate Token",
@@ -105,9 +105,20 @@ async def nb2chan(
     http -v "http://.../nb2chan/?Token=DEMO_TOKEN&qq=123&msg=hello world"
 
     # send Token via HEADERS
-    http -v "token:DEMO_TOKEN" "http://.../nb2chan/?qq=123&msg=hello world"
+    http -v "http://.../nb2chan/?qq=123&msg=hello world" "token: DEMO_TOKEN"
+    curl "http://.../nb2chan/?qq=123&msg=hello world" -H "token: DEMO_TOKEN"
     ```
     """
+    try:
+        bot = nonebot.get_bot()
+    except Exception as e:
+        logger.debug(e)
+
+        # if not bot:
+        _ = "Unable to acquire bot, exiting..."
+        logger.warning(_)
+        return {"error": f"{node}: {_}"}
+
     if not qq:
         return {"error": "qq# required（e.g. ...&qq=123456...）, 否则发给谁呢？"}
 
@@ -115,36 +126,6 @@ async def nb2chan(
         query = str(msg)
     else:
         query = ""
-
-    _ = """
-    # bot = nonebot.get_bots().get("2129462094")
-    bots = [*nonebot.get_bots().values()]
-    bot = None
-    if bots:
-        bot, *_ = bots
-
-    if not bot:
-        return
-    """
-    _ = [*nonebot.get_bots().values()]
-    logger.debug("[*nonebot.get_bots().values()]: %s", _)
-
-    # _ = [*bots.values()]
-    bot = _[0] if _ else None
-    if not bot:
-        _ = "Unable to acquire bot, exiting..."
-        logger.warning(_)
-        return f"{node:} {_}"
-
-    _ = """
-    try:
-        bot1 = current_bot.get()
-        # event = current_event.get()
-        logger.debug("dir(bot): %s", bot1)
-    except Exception as e:
-        logger.error("current_bot.get() exc: %s", e)
-        # return f"exc: {e}"
-    # """
 
     msg = f"{node} seen msg: {query}"
     try:
