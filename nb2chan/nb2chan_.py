@@ -1,4 +1,30 @@
-"""Test personal push service."""
+"""Test personal push service.
+
+curl 127.0.0.1:5580/admin?q=123
+curl 127.0.0.1:8680/admin?q=123
+
+# works only on http not https
+# works http://127.0.0.1:8680/admin/
+# does not work: https://127.0.0.1:8680/admin/
+
+    koyeb-nb2
+or
+curl externalip:5580/admin?q=123
+    if firewall is set open
+
+display 欢迎来到管理页面 q:123
+message sent to 41947782: 欢迎来到管理页面 q:123
+
+---
+app = nonebot.get_asgi()
+@app.get('/')
+async def _():
+    pass
+
+@bot.server_app.route('/admin')
+改成
+   @nonebot.get_asgi().get('/admin')
+"""
 # pylint: disable=invalid-name
 # from quart import request
 
@@ -17,18 +43,20 @@ from aiocqhttp.exceptions import Error as CQHttpError
 
 from .config import Settings
 
-settings_nb2chan = Settings()
+config = Settings()
 
 # logzero.loglevel(20)
 logzero.loglevel(10)
 
+# bots = nonebot.get_bots()
 app = nonebot.get_asgi()
-# app.fastapi_openapi_url = "/openapi.json"
-
 node = platform.node()
 
+# API_TOKEN = "SECRET_API_TOKEN"
+API_TOKENS = ["DEMO_TOKEN", "SECRET_API_TOKEN"]
+
 # may use other methods (e.g., sqlite, redis etc.)
-API_TOKENS = settings_nb2chan.token_list
+API_TOKENS = config.token_list
 
 logger.debug("API_TOKENS: %s", API_TOKENS)
 
@@ -87,7 +115,7 @@ async def nb2chan(
         logger.debug(e)
 
         # if not bot:
-        _ = "Unable to acquire bot, exiting...(go-cghttp正常运行？ ws://127.0.0.1:端口/cqhttp/ws 端口对不对？)"
+        _ = "Unable to acquire bot, exiting..."
         logger.warning(_)
         return {"error": f"{node}: {_}"}
 
@@ -108,12 +136,13 @@ async def nb2chan(
     except CQHttpError as exc:
         logger.error(exc)
         # logger.exception(exc)
-        msg = f"{node} exc: {exc}, (大佬这个qq号[{qq}]加机器人好友了吗？ 没加的话用不了nb2酱。)"
+        msg = f"{node} exc: {exc}, (大佬加机器人好友了吗？ 没加的话用不了nb2酱。)"
         res = {"error": msg}
     except Exception as exc:
         logger.error(exc)
         # logger.exception(exc)
-        msg = f"{node} exc: {exc}, (大佬这个qq号[{qq}]加机器人好友了吗？ 没加的话用不了nb2酱。)"
+        msg = f"{node} exc: {exc}"
         res = {"error": msg}
 
+    # return f"{msg}"
     return res

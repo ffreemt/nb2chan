@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nb2chan"
 version = "0.1.0"
-description = "nb2chan push service"
+description = "nb2chan push service Nonebot2酱推送"
 authors = ["ffreemt"]
 license = "MIT"
 readme = "README.md"
@@ -14,9 +14,8 @@ python = ">=3.7.3,<4.0"
 logzero = "^1.7.0"
 pendulum = "^2.1.2"
 nonebot2 = "^2.0.0-alpha.16"
-# aiofiles
-
 aiocqhttp = "^1.4.2"
+nonebot-adapter-cqhttp = "^2.0.0-alpha.16"
 [tool.poe.executor]
 type = "poetry"
 
@@ -34,6 +33,7 @@ pytest = "^5.2"
 flake8 = "^3.9.2"
 pep257 = "^0.7.0"
 poethepoet = "^0.10.0"
+pytest-asyncio = "^0.15.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

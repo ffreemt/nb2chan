@@ -357,6 +357,18 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "nonebot-adapter-cqhttp"
+version = "2.0.0a16"
+description = "OneBot(CQHTTP) adapter for nonebot2"
+category = "main"
+optional = false
+python-versions = ">=3.7.3,<4.0.0"
+
+[package.dependencies]
+httpx = ">=0.18.0,<1.0.0"
+nonebot2 = ">=2.0.0-alpha.14,<3.0.0"
+
+[[package]]
 name = "nonebot2"
 version = "2.0.0a16"
 description = "An asynchronous python bot framework."
@@ -530,6 +542,20 @@ wcwidth = "*"
 [package.extras]
 checkqa-mypy = ["mypy (==v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
+
+[[package]]
+name = "pytest-asyncio"
+version = "0.15.1"
+description = "Pytest support for asyncio."
+category = "dev"
+optional = false
+python-versions = ">= 3.6"
+
+[package.dependencies]
+pytest = ">=5.4.0"
+
+[package.extras]
+testing = ["coverage", "hypothesis (>=5.7.1)"]
 
 [[package]]
 name = "python-dateutil"
@@ -765,7 +791,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7.3,<4.0"
-content-hash = "3af792795d74c30516fa54273aaa62ebae0c7f4827333cb5c464ebc55cda2a28"
+content-hash = "231072c8ee50398674b74ca47132574ccc5bd96128c236877ac0d7e39faff4de"
 
 [metadata.files]
 aiocqhttp = [
@@ -951,6 +977,10 @@ more-itertools = [
     {file = "more-itertools-8.10.0.tar.gz", hash = "sha256:1debcabeb1df793814859d64a81ad7cb10504c24349368ccf214c664c474f41f"},
     {file = "more_itertools-8.10.0-py3-none-any.whl", hash = "sha256:56ddac45541718ba332db05f464bebfb0768110111affd27f66e0051f276fa43"},
 ]
+nonebot-adapter-cqhttp = [
+    {file = "nonebot-adapter-cqhttp-2.0.0a16.tar.gz", hash = "sha256:9de270291b98c41a45e5b629c02f16e3b25cafb3867b8161851f49c84145d8aa"},
+    {file = "nonebot_adapter_cqhttp-2.0.0a16-py3-none-any.whl", hash = "sha256:831747c55c9c1a660215225f84784a4ca275a84bffa8d1312524367066b68bbe"},
+]
 nonebot2 = [
     {file = "nonebot2-2.0.0a16-py3-none-any.whl", hash = "sha256:88596c154143fc2203a50d224bacf4e2e5be1b4142fd92e645c40258e5819924"},
     {file = "nonebot2-2.0.0a16.tar.gz", hash = "sha256:f70475e0a9525ed22cc082e35b06145b005412f919880a862e72059a84b0d2d0"},
@@ -1048,6 +1078,10 @@ pyparsing = [
 pytest = [
     {file = "pytest-5.4.3-py3-none-any.whl", hash = "sha256:5c0db86b698e8f170ba4582a492248919255fcd4c79b1ee64ace34301fb589a1"},
     {file = "pytest-5.4.3.tar.gz", hash = "sha256:7979331bfcba207414f5e1263b5a0f8f521d0f457318836a7355531ed1a4c7d8"},
+]
+pytest-asyncio = [
+    {file = "pytest-asyncio-0.15.1.tar.gz", hash = "sha256:2564ceb9612bbd560d19ca4b41347b54e7835c2f792c504f698e05395ed63f6f"},
+    {file = "pytest_asyncio-0.15.1-py3-none-any.whl", hash = "sha256:3042bcdf1c5d978f6b74d96a151c4cfb9dcece65006198389ccd7e6c60eb1eea"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
