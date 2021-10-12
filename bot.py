@@ -14,7 +14,7 @@ config = {
 nonebot.init(**config)
 
 import nb2chan  # pylint: disable=wrong-import-position, unused-import  # noqa
-# 或不用 import nb2chan，用 load_plugin， 例如
+# 或不用 import nb2chan，而用 load_plugin， 例如
 # nonebot.load_plugin("nb2chan")
 
 driver = nonebot.get_driver()
@@ -23,6 +23,8 @@ driver.register_adapter("cqhttp", CQHTTPBot)
 
 nonebot.load_builtin_plugins()
 
+# import nb2chan.autohelp  # pylint: disable=wrong-import-position, unused-import  # noqa
+# nonebot.load_plugin("nb2chan.autohelp")
 
 app = nonebot.get_asgi()
 
