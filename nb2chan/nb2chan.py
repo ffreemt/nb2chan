@@ -63,6 +63,12 @@ async def get_api_key(
         )
 
 
+@app.get("/")
+async def landing():
+    """Define landing page."""
+    return "Hello nb2chan!"
+
+
 @app.get("/nb2chan/")
 async def nb2chan(
     token: str = Depends(get_api_key),
