@@ -26,7 +26,7 @@ nonebot.init()
 import nb2chan
 ...
 ```
-(参看`bot.py`)
+(参看[`bot.py`](https://github.com/ffreemt/nb2chan/blob/master/bot.py))
 
 * 目标qq号（例如QQ号 1234）加`nonebot2`机器人qq号好友
 * `nonebot2`部署至外网`ip`，例如 `uvicorn --host 0.0.0.0 bot:app` (火墙需放行`nonebot2`的端口)
