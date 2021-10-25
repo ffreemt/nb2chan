@@ -26,6 +26,8 @@ nonebot.load_builtin_plugins()
 # import nb2chan.autohelp  # pylint: disable=wrong-import-position, unused-import  # noqa
 # nonebot.load_plugin("nb2chan.autohelp")
 
+nonebot.load_plugin("nb2chan.mecho")
+
 app = nonebot.get_asgi()
 
 

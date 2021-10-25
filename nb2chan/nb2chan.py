@@ -22,7 +22,14 @@ settings_nb2chan = Settings()
 # logzero.loglevel(20)
 logzero.loglevel(10)
 
-app = nonebot.get_asgi()
+try:
+    app = nonebot.get_asgi()
+except ValueError as e:
+    logger.error(e)
+    if "Nonebot" in str(e):
+        logger.warning("Do import 'nonebot; nonebot.init()' before import nb2chan")
+        raise SystemExit(e)
+    raise
 # app.fastapi_openapi_url = "/openapi.json"
 
 node = platform.node()
