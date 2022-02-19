@@ -34,6 +34,11 @@ import nb2chan
 ```bash
 http://...:port/nb2chan/?Token=DEMO_TOKEN&qq=1234&msg=hello
 ```
+例如，qq 1234 加 `2129462094` 为好友后，即可从以下url发推送消息给 1234。（qq 2129462094 在`okteto`里提供推送消息服务。）
+```
+https://nb2chan-dattw.cloud.okteto.net/nb2chan/?Token=DEMO_TOKEN&qq=1234&msg=hello1
+```
+
 令牌也可在`headers`里设定，例如
 ```
 curl http://...:port/nb2chan/?qq=1234&msg=hello -H "token: DEMO_TOKEN"
