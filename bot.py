@@ -1,7 +1,9 @@
 """Bootstrap the bot."""
+# pylint: disable=invalid-name
 import nonebot
 
-from nonebot.adapters.cqhttp import Bot as CQHTTPBot
+# from nonebot.adapters.cqhttp import Bot as CQHTTPBot
+from nonebot.adapters.onebot.v11 import Adapter as ONEBOT_V11Adapter
 
 config = {
     "host": "0.0.0.0",
@@ -12,26 +14,29 @@ config = {
 }
 
 nonebot.init(**config)
+app = nonebot.get_asgi()
 
 import nb2chan  # pylint: disable=wrong-import-position, unused-import  # noqa
 # 或不用 import nb2chan，而用 load_plugin， 例如
 # nonebot.load_plugin("nb2chan")
 
-driver = nonebot.get_driver()
+def main():
+    """Run other stuff."""
+    driver = nonebot.get_driver()
 
-driver.register_adapter("cqhttp", CQHTTPBot)
+    # driver.register_adapter("cqhttp", CQHTTPBot)
+    driver.register_adapter(ONEBOT_V11Adapter)
 
-nonebot.load_builtin_plugins()
+    nonebot.load_builtin_plugins()
 
-# import nb2chan.autohelp  # pylint: disable=wrong-import-position, unused-import  # noqa
-# nonebot.load_plugin("nb2chan.autohelp")
+    # import nb2chan.autohelp  # pylint: disable=wrong-import-position, unused-import  # noqa
+    # nonebot.load_plugin("nb2chan.autohelp")
 
-nonebot.load_plugin("nb2chan.mecho")
-
-app = nonebot.get_asgi()
+    nonebot.load_plugin("nb2chan.mecho")
 
 
 if __name__ == "__main__":
+    main()
     nonebot.run(app="bot:app")
 
     # or
