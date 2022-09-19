@@ -8,7 +8,7 @@
     "license": "MIT",
     "scripts": {
         "start": "pyright && pytest && yarn style",
-        "test1": "nodemon -w tests -w nb2chan -x pytest tests",
+        "test": "nodemon -w tests -w nb2chan -x pytest tests",
         "pyright": "nodemon -w nb2chan -w .venv -e .py -x pyright nb2chan tests",
         "pytest": "nodemon -w tests -w nb2chan -e .py -x pytest tests nb2chan",
         "style": "nodemon -w nb2chan -w tests -x \"black tests nb2chan && python -m flake8\"",
