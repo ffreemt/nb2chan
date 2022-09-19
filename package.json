@@ -6,13 +6,9 @@
     "repository": "git@github.com:ffreemt/nb2chan.git",
     "author": "ffreemt",
     "license": "MIT",
-    "dependencies": {
-        "husky": "^8.0.1",
-        "npm-run-all": "^4.1.5"
-    },
     "scripts": {
         "start": "pyright && pytest && yarn style",
-        "test": "nodemon -w tests -w nb2chan -x pytest tests",
+        "test1": "nodemon -w tests -w nb2chan -x pytest tests",
         "pyright": "nodemon -w nb2chan -w .venv -e .py -x pyright nb2chan tests",
         "pytest": "nodemon -w tests -w nb2chan -e .py -x pytest tests nb2chan",
         "style": "nodemon -w nb2chan -w tests -x \"black tests nb2chan && python -m flake8\"",
@@ -23,14 +19,19 @@
         "black": "black tests nb2chan",
         "flake8": "flake8 tests nb2chan",
         "pep257": "pep257 tests nb2chan",
-        "final": "run-s pep257 black flake8 pytest"
+        "final": "run-s pep257 black flake8 pytest",
+        "prepare": "husky install"
     },
     "husky": {
         "hooks": {
-            “applypatch-msg”: “echo \”[Husky] applypatch-msg\””,
-            “pre-applypatch”: “echo \”[Husky] pre-applypatch\””,
-            “post-applypatch”: “echo \”[Husky] post-applypatch\””,
-            “pre-commit”: “echo \”[Husky] pre-commit\””,
+            "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+            "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+            "post-applypatch": "echo \"[Husky] post-applypatch\"",
+            "pre-commit": "echo \"[Husky] pre-commit\""
         }
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5",
+        "husky": "^8.0.0"
     }
 }
