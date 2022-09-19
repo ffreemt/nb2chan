@@ -22,7 +22,7 @@ from .config import Settings
 settings_nb2chan = Settings()
 
 # logzero.loglevel(20) to suppress noisy debug messags
-logzero.loglevel(10)
+# logzero.loglevel(10)
 
 try:
     app = nonebot.get_asgi()
@@ -39,11 +39,11 @@ node = platform.node()
 # may use other methods (e.g., sqlite, redis etc.)
 API_TOKENS = settings_nb2chan.token_list
 
-logger.debug("API_TOKENS: %s", API_TOKENS)
+logger.info("API_TOKENS: %s", API_TOKENS)
 logger.info(
     """
     To see nb2chan in action:
-    curl "127.0.0.1:8680/nb2chan/?Token=DEMO_TOKEN&qq=1234&msg=hello" """
+    curl "127.0.0.1:PORT/nb2chan/?Token=DEMO_TOKEN&qq=1234&msg=hello" """
 )
 
 # app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -107,10 +107,12 @@ async def nb2chan(
     try:
         bot = nonebot.get_bot()
     except Exception as exc:
-        logger.debug(exc)
+        logger.error(exc)
 
         # if not bot:
-        _ = "Unable to acquire bot, exiting...(go-cghttp正常运行？ ws://127.0.0.1:端口/onebot/v11/ws 端口对不对？)"
+        _ = """Unable to acquire bot,
+            exiting...(go-cghttp正常运行？
+            ws://127.0.0.1:端口/onebot/v11/ws 端口对不对？)"""
         logger.warning(_)
         return {"error": f"{node}: {_}"}
 
