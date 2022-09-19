@@ -3,3 +3,4 @@
 
 # npm test
 isort --profile black nb2chan
+black nb2chan

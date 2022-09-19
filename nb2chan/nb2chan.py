@@ -3,21 +3,21 @@
 # from quart import request
 
 import platform
-import pendulum
-from fastapi import Security, Depends, HTTPException, status
-
-# from fastapi.staticfiles import StaticFiles
-from fastapi.security import APIKeyHeader, APIKeyQuery
 
 # from contextvars import ContextVar
 import logzero
+import nonebot
+import pendulum
+from fastapi import Depends, HTTPException, Security, status
+
+# from fastapi.staticfiles import StaticFiles
+from fastapi.security import APIKeyHeader, APIKeyQuery
 from logzero import logger
 
-import nonebot
+from .config import Settings
 
 # from aiocqhttp.exceptions import Error as CQHttpError
 
-from .config import Settings
 
 settings_nb2chan = Settings()
 

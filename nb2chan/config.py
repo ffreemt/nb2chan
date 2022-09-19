@@ -2,9 +2,8 @@
 # pylint: disable=invalid-name, too-few-public-methods, no-self-argument, no-self-use
 from typing import List, Union
 
-from pydantic import BaseSettings, Field, validator
-
 from logzero import logger
+from pydantic import BaseSettings, Field, validator
 
 
 class Settings(BaseSettings):
